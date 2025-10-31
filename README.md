@@ -173,40 +173,40 @@ docker build -t img-2024mt03553 .
 eval $(minikube docker-env -u)
 ```
 
-### 2. ConfigMap (`config-2024MT03553.yaml`)
+### 2. ConfigMap (`config-2024mt03553.yaml`)
 
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-2024MT03553
+  name: config-2024mt03553
 data:
   APP_VERSION: "1.0"
   APP_TITLE: "Devops for Cloud Assignment"
 ```
 
-### 3. Deployment (`dep-2024MT03553.yaml`)
+### 3. Deployment (`dep-2024mt03553.yaml`)
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-2024MT03553
+  name: dep-2024mt03553
   labels:
-    app: flask-app-2024MT03553
+    app: flask-app-2024mt03553
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask-app-2024MT03553
+      app: flask-app-2024mt03553
   template:
     metadata:
       labels:
-        app: flask-app-2024MT03553
+        app: flask-app-2024mt03553
     spec:
       containers:
       - name: flask-app-container
-        image: img-2024MT03553
+        image: img-2024mt03553
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
@@ -214,25 +214,25 @@ spec:
         - name: APP_VERSION
           valueFrom:
             configMapKeyRef:
-              name: config-2024MT03553
+              name: config-2024mt03553
               key: APP_VERSION
         - name: APP_TITLE
           valueFrom:
             configMapKeyRef:
-              name: config-2024MT03553
+              name: config-2024mt03553
               key: APP_TITLE
 ```
 
-### 4. Service/Load Balancer (`svc-2024MT03553.yaml`)
+### 4. Service/Load Balancer (`svc-2024mt03553.yaml`)
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-2024MT03553
+  name: svc-2024mt03553
 spec:
   selector:
-    app: flask-app-2024MT03553
+    app: flask-app-2024mt03553
   ports:
     - protocol: TCP
       port: 80
@@ -243,9 +243,9 @@ spec:
 ### 5. Deployment Commands
 
 ```bash
-kubectl apply -f config-2024MT03553.yaml
-kubectl apply -f dep-2024MT03553.yaml
-kubectl apply -f svc-2024MT03553.yaml
+kubectl apply -f config-2024mt03553.yaml
+kubectl apply -f dep-2024mt03553.yaml
+kubectl apply -f svc-2024mt03553.yaml
 ```
 
 Verify:
