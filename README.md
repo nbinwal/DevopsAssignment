@@ -119,13 +119,13 @@ CMD ["gunicorn", "--bind", "0.0.0.0:8000", "main:app"]
 ### 2. Build the Docker Image
 
 ```bash
-docker build -t img-2024MT03553 .
+docker build -t img-2024mt03553 .
 ```
 
 Verify:
 
 ```bash
-docker images | grep img-2024MT03553
+docker images | grep img-2024mt03553
 ```
 
 ---
