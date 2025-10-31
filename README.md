@@ -254,6 +254,7 @@ Verify:
 kubectl get deployments
 kubectl get pods
 kubectl get svc
+minikube service svc-2024mt03553 --url
 ```
 
 ### 6. Verification (Load Balancing)
