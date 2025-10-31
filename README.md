@@ -145,7 +145,7 @@ docker run -d -p 8000:8000 \
 ### 2. Verification
 
 ```bash
-docker ps | grep cnr-2024MT03553
+docker ps | grep cnr-2024mt03553
 ```
 
 Access in browser:
@@ -154,8 +154,8 @@ Access in browser:
 Stop and remove container when done:
 
 ```bash
-docker stop cnr-2024MT03553
-docker rm cnr-2024MT03553
+docker stop cnr-2024mt03553
+docker rm cnr-2024mt03553
 ```
 
 ---
@@ -169,7 +169,7 @@ If using Minikube:
 ```bash
 minikube start
 eval $(minikube docker-env)
-docker build -t img-2024MT03553 .
+docker build -t img-2024mt03553 .
 eval $(minikube docker-env -u)
 ```
 
