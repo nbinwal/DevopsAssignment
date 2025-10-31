@@ -136,10 +136,10 @@ docker images | grep img-2024mt03553
 
 ```bash
 docker run -d -p 8000:8000 \
-    --name cnr-2024MT03553 \
+    --name cnr-2024mt03553 \
     -e APP_VERSION="1.0" \
     -e APP_TITLE="Devops for Cloud Assignment" \
-    img-2024MT03553
+    img-2024mt03553
 ```
 
 ### 2. Verification
