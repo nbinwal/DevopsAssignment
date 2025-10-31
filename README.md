@@ -263,8 +263,10 @@ minikube service svc-2024mt03553 --url
 POD_1=$(kubectl get pods -l app=flask-app-2024mt03553 -o jsonpath='{.items[0].metadata.name}')
 POD_2=$(kubectl get pods -l app=flask-app-2024mt03553 -o jsonpath='{.items[1].metadata.name}')
 
-kubectl logs -f $POD_1
-kubectl logs -f $POD_2
+kubectl logs -f $POD_1   in Terminal 1
+kubectl logs -f $POD_2   in Terminal 2
+
+In Terminal 3:
 
 SERVICE_URL=$(minikube service svc-2024mt03553 --url)
 for i in {1..10}; do curl $SERVICE_URL/get_info; done
