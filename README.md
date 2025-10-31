@@ -260,13 +260,13 @@ minikube service svc-2024mt03553 --url
 ### 6. Verification (Load Balancing)
 
 ```bash
-POD_1=$(kubectl get pods -l app=flask-app-2024MT03553 -o jsonpath='{.items[0].metadata.name}')
-POD_2=$(kubectl get pods -l app=flask-app-2024MT03553 -o jsonpath='{.items[1].metadata.name}')
+POD_1=$(kubectl get pods -l app=flask-app-2024mt03553 -o jsonpath='{.items[0].metadata.name}')
+POD_2=$(kubectl get pods -l app=flask-app-2024mt03553 -o jsonpath='{.items[1].metadata.name}')
 
 kubectl logs -f $POD_1
 kubectl logs -f $POD_2
 
-SERVICE_URL=$(minikube service svc-2024MT03553 --url)
+SERVICE_URL=$(minikube service svc-2024mt03553 --url)
 for i in {1..10}; do curl $SERVICE_URL/get_info; done
 ```
 
@@ -292,7 +292,7 @@ Update your service file to include Prometheus annotations:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-2024MT03553
+  name: svc-2024mt03553
   labels:
     release: prometheus
   annotations:
@@ -301,7 +301,7 @@ metadata:
     prometheus.io/path: "/metrics"
 spec:
   selector:
-    app: flask-app-2024MT03553
+    app: flask-app-2024mt03553
   ports:
     - protocol: TCP
       port: 80
@@ -312,7 +312,7 @@ spec:
 Re-apply:
 
 ```bash
-kubectl apply -f svc-2024MT03553.yaml
+kubectl apply -f svc-2024mt03553.yaml
 ```
 
 ### 3. Verification and Prometheus Queries
@@ -335,12 +335,12 @@ Access: **[http://localhost:9090](http://localhost:9090)**
 * **CPU Usage:**
 
   ```promql
-  sum(rate(container_cpu_usage_seconds_total{pod=~"dep-2024MT03553.*"}[5m])) by (pod)
+  sum(rate(container_cpu_usage_seconds_total{pod=~"dep-2024mt03553.*"}[5m])) by (pod)
   ```
 * **Memory Usage:**
 
   ```promql
-  container_memory_working_set_bytes{pod=~"dep-2024MT03553.*"}
+  container_memory_working_set_bytes{pod=~"dep-2024mt03553.*"}
   ```
 
 Take screenshots of these graphs for submission.
@@ -349,7 +349,7 @@ Take screenshots of these graphs for submission.
 
 ## 📦 Submission File List
 
-Include the following in your final zip file **`2024MT03553_dc.zip`**:
+Include the following in your final zip file **`2024mt03553_dc.zip`**:
 
 1. `main.py`
 2. `requirements.txt`
