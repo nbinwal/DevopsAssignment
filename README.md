@@ -79,11 +79,14 @@ if __name__ == "__main__":
 ### 4. Local Execution (Task 1 Verification)
 
 ```bash
+
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 
 export APP_VERSION="1.0"
 export APP_TITLE="Devops for Cloud Assignment"
-uvicorn main:app --host 0.0.0.0 --port 8000 
+python main.py 
 ```
 
 Then verify in your browser:
