@@ -60,6 +60,7 @@ if __name__ == '__main__':
 Flask
 gunicorn
 prometheus-client
+uvicorn
 ```
 
 ---
