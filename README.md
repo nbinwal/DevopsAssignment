@@ -292,6 +292,12 @@ spec:
 1. **Install Prometheus Stack** (Requires Helm, assuming it is installed):
 
    ```bash
+
+   # 1. Apply ConfigMap
+   kubectl apply -f prometheus-config.yaml
+
+   # 2. Apply Deployment and Service
+   kubectl apply -f prometheus-deployment.yaml
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
    helm repo update
    helm install prometheus prometheus-community/kube-prometheus-stack
