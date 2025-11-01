@@ -236,7 +236,8 @@ spec:
    docker run -d --name cnr-2024mt03553 -p 8000:8000 img-2024mt03553
    ```
 
-5. **Verify Application Access:** Access `http://localhost:8000/get_info`.
+5. **Verify Application Access:** Access `minikube ip`
+``http://<MINIKUBE_IP>:8000/get_info.
 
 6. **Stop and Remove Container:**
 
