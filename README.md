@@ -10,8 +10,8 @@ This file creates the Flask application, the `/get_info` endpoint, and the Prome
 
 ```python
 import os
-from flask import Flask, jsonify
-from prometheus_client import start_http_server, Counter
+from flask import Flask, jsonify, Response
+from prometheus_client import generate_latest, Counter # Use generate_latest
 
 # ----------------- Prometheus Metrics Setup (Task 6) -----------------
 # Define a counter for total requests to the /get_info endpoint
@@ -20,14 +20,11 @@ REQUEST_COUNT = Counter(
     'Total requests received by the application', 
     ['method', 'endpoint', 'status']
 )
-# Start Prometheus server on the same port Gunicorn uses (8000)
-start_http_server(8000)
 
 # ----------------- Flask Application Setup (Task 1) -----------------
 app = Flask(__name__)
 
-# Read environment variables (dynamically injected via K8s ConfigMap)
-# Initially set APP_VERSION to "1.0" and APP_TITLE to "Devops for Cloud Assignment"
+# Read environment variables
 APP_VERSION = os.environ.get('APP_VERSION', '1.0')
 APP_TITLE = os.environ.get('APP_TITLE', 'Devops for Cloud Assignment')
 
@@ -44,8 +41,14 @@ def get_info():
     }
     return jsonify(response_data)
 
-# The /metrics route is implicitly handled by start_http_server on port 8000
+@app.route('/metrics') # Task 6: Dedicated route for Prometheus to scrape
+def metrics():
+    """Returns the Prometheus metrics data."""
+    # This generates the latest metrics and serves them over the Flask app (Gunicorn worker)
+    return Response(generate_latest(), mimetype='text/plain')
+
 if __name__ == '__main__':
+    # This block is for local development only
     app.run(host='0.0.0.0', port=8000, debug=True)
 ```
 
