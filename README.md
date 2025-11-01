@@ -237,7 +237,7 @@ spec:
    ```
 
 5. **Verify Application Access:** Access `minikube ip`
-``http://<MINIKUBE_IP>:8000/get_info.
+`http://<MINIKUBE_IP>:8000/get_info`.
 
 6. **Stop and Remove Container:**
 
