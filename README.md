@@ -214,6 +214,7 @@ spec:
 1. **Set Minikube Context** (Required to build the image inside Minikube's Docker daemon):
 
    ```bash
+   minikube start
    eval $(minikube docker-env)
    ```
 
