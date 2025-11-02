@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-2024mt03553
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-2024mt03553
+  template:
+    metadata:
+      labels:
+        app: flask-2024mt03553
+    spec:
+      containers:
+      - name: flask-app
+        image: img-2024mt03553:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: config-2024mt03553
